@@ -39,6 +39,9 @@ public class Bullet : MonoBehaviour {
 	void HitTarget() {
 		GameObject effectPart = (GameObject)Instantiate(particle, this.transform.position, this.transform.rotation);
 		Destroy(effectPart, 1.5f);
+		// TODO: Make this legit
+		
+		if (target ) target.gameObject.GetComponent<Enemy>().Damage(10);
 		Destroy(this.gameObject);
 	}
 }
