@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour {
 	public float speed = 7.5f;
 	// Use this for initialization
 	public GameObject particle;
+	private int damage = 5;
+	public string appliedStatus = "SLOW";
 	void Start () {
 		
 	}
@@ -41,7 +43,7 @@ public class Bullet : MonoBehaviour {
 		Destroy(effectPart, 1.5f);
 		// TODO: Make this legit
 		
-		if (target ) target.gameObject.GetComponent<Enemy>().Damage(10);
+		if (target ) target.gameObject.GetComponent<Enemy>().Damage(this.damage, this.appliedStatus);
 		Destroy(this.gameObject);
 	}
 }

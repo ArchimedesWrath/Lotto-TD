@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour {
 	private Transform target;
 	private int CheckPointIndex = 0;
 	public int health = 10;
+	public string status;
+	private float statusTimer = 5000;
 
 	public GameObject particle;
 	// Use this for initialization
@@ -23,6 +25,12 @@ public class Enemy : MonoBehaviour {
 		if (Vector3.Distance(this.transform.position, target.position) <= 0.2f) {
 			this.GetCheckPoint();
 		}
+
+		if (this.status != null) {
+			this.statusTimer -= Time.deltaTime;
+		}
+
+		if (this.statusTimer <= 0) ResetStatus();
 	}
 
 	void GetCheckPoint() {
@@ -45,9 +53,23 @@ public class Enemy : MonoBehaviour {
 		Destroy(this.gameObject);
 	}
 
-	public void Damage(int dps) {
+	public void Damage(int dps, string appliedStatus) {
 		Debug.Log(dps + " damage was applied to this GameObject.");
 		this.health -= dps;
+		if (appliedStatus != null && this.status == null) SetStatus(appliedStatus);
+
 		if (this.health <= 0 ) this.Die();
+	}
+
+	public void SetStatus(string status) {
+		this.status = status;
+		if (this.status == "SLOW") this.speed *= -0.5f;
+		this.statusTimer = 5000;
+	}
+
+	void ResetStatus() {
+		this.status = null;
+		this.statusTimer = 5000;
+		this.speed = 2.5f;
 	}
 }

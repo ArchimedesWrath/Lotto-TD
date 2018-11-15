@@ -13,6 +13,7 @@ public class Node : MonoBehaviour {
 	void Start() {
 		rend = GetComponent<Renderer>();
 		startColor = rend.material.color;
+		tower = null;
 	}
 
 	void OnMouseDown() {
@@ -20,6 +21,7 @@ public class Node : MonoBehaviour {
 			// Open up the tower info UI
 
 			// Set the player's current node to this node
+			Debug.Log("Destroying Tower");
 			return;
 		}
 
@@ -33,5 +35,9 @@ public class Node : MonoBehaviour {
 
 	void OnMouseExit() {
 		rend.material.color = startColor;
+	}
+
+	public void SetCurrentTower(GameObject newTower) {
+		this.tower = newTower;
 	}
 }

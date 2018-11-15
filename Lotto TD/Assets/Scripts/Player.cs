@@ -42,11 +42,16 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ChoseRandomTower() {
+		if (currentNode.GetComponent<Node>().tower != null) {
+			Debug.Log("This node already has a tower!");
+			return;
+		}
 		int randIndex = UnityEngine.Random.Range(0, lowTowers.Count - 1);
 		this.BuildTower(lowTowers[randIndex]);
 	}
 
 	void BuildTower(GameObject tower) {
+		currentNode.GetComponent<Node>().SetCurrentTower(tower);
 		Transform pos = tower.transform.GetChild(0).gameObject.transform;
 		Vector3 newPos = new Vector3(0f, pos.localScale.y / 2 + currentNode.transform.localScale.y / 2, 0f);
 		tower = (GameObject)Instantiate(tower, currentNode.transform.position + newPos, currentNode.transform.rotation);
