@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour {
 		Destroy(effectPart, 1.5f);
 		// TODO: Make this legit
 		
-		if (target ) target.gameObject.GetComponent<Enemy>().Damage(this.damage, this.appliedStatus);
+		if (target ) target.gameObject.GetComponent<Enemy>().Damage(this.damage);
 		Destroy(this.gameObject);
 	}
 }

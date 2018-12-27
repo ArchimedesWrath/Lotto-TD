@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
 public class BuildTower : MonoBehaviour {
-	public GameObject tower;
 	public void PurchaseRandomTowerLow() {
 		Debug.Log("Random low tower purchased");
 		//TODO: Create random way of chosing different towers
-		Player.instance.ChoseRandomTower();
+		BuildManager.instance.ChoseRandomTower();
 	}
 
 	public void PurchaseRandomTowerMed() {
