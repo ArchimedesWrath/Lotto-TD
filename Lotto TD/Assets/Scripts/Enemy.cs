@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void Damage(int dps) {
-		Debug.Log(dps + " damage was applied to this GameObject.");
 		this.health -= dps;
 
 		if (this.health <= 0 ) this.Die();

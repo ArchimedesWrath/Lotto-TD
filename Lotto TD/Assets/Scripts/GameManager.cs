@@ -1,34 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
-	private float roundTimer = 20.45f;
+	private float roundTime = 10.45f;
+
+	public static float RoundTimer;
 	public Text roundTimerText;
-	public Text roundText;
-	private int round = 0;
+
+	private int startingRound = 1;
+	public static int Round;
 
 	private int enemyCount = 0;
-	// Use this for initialization
 	void Start () {
 		instance = this;
+		Round = startingRound;
+		RoundTimer = roundTime;
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		roundText.text = round.ToString();
 		if (enemyCount > 0) {
-			roundTimerText.gameObject.SetActive(true);
-			roundTimerText.text = roundTimer.ToString("0");
-			roundTimer -= Time.deltaTime;
+			RoundTimer -= Time.deltaTime;
 		} else {
-			roundTimer = 20.45f;
-			roundTimerText.gameObject.SetActive(false);
+			RoundTimer = roundTime;
 		}
 
-		if (roundTimer <= 0 && enemyCount > 0) {
+		if (RoundTimer <= 0 && enemyCount > 0) {
 			// Destroy all enemies and take lives from player;
 			DestroyAllEnemies();
 		}
@@ -46,7 +43,7 @@ public class GameManager : MonoBehaviour {
 		return this.enemyCount;
 	}
 	public void NextRound() {
-		this.round++;
+		Round++;
 	}
 
 	void DestroyAllEnemies() {
@@ -55,6 +52,7 @@ public class GameManager : MonoBehaviour {
 		foreach(GameObject enemy in enemies) {
 			int enemyHealth = enemy.gameObject.GetComponent<Enemy>().health;
 			enemy.gameObject.GetComponent<Enemy>().Damage(enemyHealth);
+			PlayerStats.Lives--;
 		}
 
 		enemyCount = 0;

@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4778445336854432}
+  - component: {fileID: 114853715360873706}
   m_Layer: 0
   m_Name: BreezeTower
   m_TagString: Untagged
@@ -354,3 +355,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24e35c965b999a498006ea28cf0df7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114853715360873706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076256310440768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00eecc4864bbffa4d8a1e545c97a1a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1641432794753968, guid: 75337ca8514a51042a12dceebe01e5e2, type: 2}
+  range: 4
+  fireRate: 1

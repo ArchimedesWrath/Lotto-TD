@@ -6,17 +6,20 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour {
 
 	public Color hoverColor;
-	public GameObject tower;
+	public Tower tower;
 	private Color startColor;
 	private Renderer rend;
 
 	private Color[] originalColor;
+
+	BuildManager buildManager;
 
 
 	void Start() {
 		if (rend == null) rend = GetComponent<Renderer>();
 		StoreOriginalColor();
 		tower = null;
+		buildManager = BuildManager.instance;
 	}
 
 	private void StoreOriginalColor() {
@@ -28,22 +31,31 @@ public class Node : MonoBehaviour {
 			}
 		}
 	}
+
+	public bool HasTower() {
+		if (tower) {
+			return true;
+		} 
+		return false;
+	}
 	void OnMouseDown() {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {
 			if (!IPointerOverUIObject()) {
+
 				if (tower != null) {
 				// Open up the tower info UI
 
 				// Set the player's current node to this node
-				Debug.Log("Destroying Tower");
+				buildManager.SetCurrentTower(tower);
 				return;
 			}
 
 			//TODO: Open up tower builder UI here
 			// For right now we will just spawn a tower here.
-			Player.instance.SetCurrentNode(this.gameObject);
+			buildManager.SetCurrentNode(this);
+
 			}
 		}
 	}
@@ -77,7 +89,7 @@ public class Node : MonoBehaviour {
 		}
 	}
 
-	public void SetCurrentTower(GameObject newTower) {
-		this.tower = newTower;
+	public void SetCurrentTower(Tower newTower) {
+		tower = newTower;
 	}
 }

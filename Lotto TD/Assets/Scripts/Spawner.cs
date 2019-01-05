@@ -4,32 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
-	public static Spawner instance;
 	public Transform spawnPoint;
 	public GameObject Enemy;
-	public Text spawnTimerText;
-	private float spawnTimer = 5.45f;
-	public bool isSpawning = false;
-	void Awake() {
-		instance = this;
+	private float spawnTime = 5.45f;
+	public static float SpawnTimer;
+	public static bool isWaiting;
+	private bool isGameStart = true;
+	void Start() {
+		SpawnTimer = spawnTime;
+		isWaiting = false;
 	}
 
 	void Update() {
-
 		if (GameManager.instance.GetEnemyCount() <= 0) {
-			spawnTimerText.gameObject.SetActive(true);
-			spawnTimerText.text = spawnTimer.ToString("0");
-			if (spawnTimer <= 0) {
+			isWaiting = true;
+			SpawnTimer -= Time.deltaTime;
+			if (SpawnTimer <= 0) {
 				StartCoroutine(SpawnEnemies());
-				spawnTimer = 5.45f;
+				SpawnTimer = spawnTime;
+				isWaiting = false;
 				GameManager.instance.SetEnemyCount(5);
-				GameManager.instance.NextRound();
+				if (!isGameStart) 
+					GameManager.instance.NextRound();
+				else 
+					isGameStart = false;
 			}
-			spawnTimer -= Time.deltaTime;
-		} else {
-			spawnTimerText.gameObject.SetActive(false);
-		}
-
+		} 
 	}
 
 	IEnumerator SpawnEnemies() {

@@ -70,6 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4297627117165436}
+  - component: {fileID: 114540906618761880}
   m_Layer: 0
   m_Name: Campfire
   m_TagString: Untagged
@@ -230,6 +231,20 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114540906618761880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995650330358534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00eecc4864bbffa4d8a1e545c97a1a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1641432794753968, guid: 75337ca8514a51042a12dceebe01e5e2, type: 2}
+  range: 4
+  fireRate: 1
 --- !u!198 &198684272250593214
 ParticleSystem:
   m_ObjectHideFlags: 1

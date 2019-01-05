@@ -1,51 +1,67 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour {
 
 	public static BuildManager instance; 
+	private Node currentNode;
+	public static Tower CurrentTower;
 
-	public Player player;
-	private GameObject tower;
+	private List<Tower> towerList = new List<Tower>();
+	public Tower tower_1;
+	public Tower tower_2;
 
-	private List<GameObject> towerList = new List<GameObject>();
-	public GameObject tower_1;
-	public GameObject tower_2;
-
+	public TowerBuilderUI builderUI;
+	public TowerUI towerUI;
+	public TowerStatsUI towerStatsUI;
 	void Awake() {
 		// Every time we start the game, instantiate one and only one Player that can 
 		// be accessed from anywhere.
 		if (instance != null)  {
-			Debug.Log("More than one Player in scene!");
 			return;
 		}
 		instance = this;
 	}
 	void Start () {
-		player = gameObject.GetComponent("Player") as Player;
+		currentNode = null;
+		CurrentTower = null;
 		towerList.Add(tower_1);
 		towerList.Add(tower_2);
 	}
 
 	public void ChoseRandomTower() {
 		
-		if (player.GetComponent<Node>().tower != null) {
+		if (currentNode.HasTower()) {
 			Debug.Log("This node already has a tower!");
 			return;
 		}
 		int randIndex = UnityEngine.Random.Range(0, towerList.Count);
-		this.BuildTower(towerList[randIndex]);
+		this.BuildTower(towerList[randIndex], currentNode);
 		
 	}
 
-	void BuildTower(GameObject tower) {
-		player.GetComponent<Node>().SetCurrentTower(tower);
+	public void BuildTower(Tower tower, Node node) {
+		node.SetCurrentTower(tower);
 
 		float towerHeight = tower.transform.GetChild(0).GetComponent<Renderer>().bounds.size.y;
-		float nodeHeight = player.GetComponent<Node>().GetComponent<Renderer>().bounds.size.y;
+		float nodeHeight = node.GetComponent<Renderer>().bounds.size.y;
 		Vector3 newPos = new Vector3(0f, towerHeight / 2 + nodeHeight, 0);
 		Quaternion rotation = Quaternion.Euler(0f, 0f, 0f);
-		tower = (GameObject)Instantiate(tower, player.GetComponent<Node>().transform.position + newPos, rotation);
+		Instantiate(tower.gameObject, node.transform.position + newPos, rotation);
+	}
+
+	public void SetCurrentNode(Node node) {
+		currentNode = node;
+		towerUI.Hide();
+		towerStatsUI.Hide();
+		builderUI.Show();
+	}
+
+	public void SetCurrentTower(Tower tower) {
+		CurrentTower = tower;
+		builderUI.Hide();
+		towerStatsUI.Show();
+		towerUI.Show();
 	}
 }
