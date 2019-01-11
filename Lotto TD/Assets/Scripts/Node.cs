@@ -46,7 +46,6 @@ public class Node : MonoBehaviour {
 
 				// If user shift clicks a node add it to the group
 				if (Input.GetKey(KeyCode.LeftShift)) {
-					Debug.Log("This actually works!");
 
 					if (tower == null) return;
 					buildManager.SetSecondNode(this);
@@ -93,5 +92,10 @@ public class Node : MonoBehaviour {
 
 	public void SetCurrentTower(GameObject newTower) {
 		tower = newTower;
+	}
+
+	public void DestroyCurrentTower() {
+		Destroy(tower);
+		tower = null;
 	}
 }

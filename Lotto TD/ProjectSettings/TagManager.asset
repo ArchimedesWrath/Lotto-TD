@@ -15,6 +15,9 @@ TagManager:
   - WINDTOWER
   - SPARKTOWER
   - PEBBLETOWER
+  - DEWTOWER
+  - WATERTOWER
+  - ROCKTOWER
   layers:
   - Default
   - TransparentFX

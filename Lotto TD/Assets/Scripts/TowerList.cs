@@ -42,7 +42,6 @@ public class TowerList : MonoBehaviour {
     public void RemoveTower(GameObject tower) {
 			for(int i = 0; i < Towers.Count; i++) {
 				if (Towers[i].tower.tag == tower.tag) {
-					Debug.Log("Tower being removed" + tower);
 					Destroy(Towers[i].tower.gameObject);
 					Towers[i].tower = null;
 					Towers.Remove(Towers[i]);
@@ -57,8 +56,6 @@ public class TowerList : MonoBehaviour {
 	public int TowerCount(GameObject tower) {
 		int numTowers = 0;
 		foreach (Node presentTower in Towers) {
-			Debug.Log("Present tower: " + presentTower.tower);
-			Debug.Log("Tower needed: " + tower);
 			if (tower.tag == presentTower.tower.tag) numTowers++;
 		} 
 		return numTowers;

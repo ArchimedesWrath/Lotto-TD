@@ -68,6 +68,12 @@ public class BuildManager : MonoBehaviour {
 		SecondNode = node;
 	}
 
+	public void SellTower() {
+		currentNode.DestroyCurrentTower();
+		BuildingUI();
+
+	}
+
 	private void TowerStatsUI() {
 		builderUI.Hide();
 		towerUI.Show();

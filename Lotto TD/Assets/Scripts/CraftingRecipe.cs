@@ -16,7 +16,6 @@ public class CraftingRecipe : ScriptableObject {
 	public GameObject Result;	
 	public bool CanCraft(TowerList towers) {
 		foreach(TowerAmount towerAmount in Materials) {
-			Debug.Log("You need " + towerAmount.Amount + "of tower type: " +towerAmount.Tower);
 			if (towers.TowerCount(towerAmount.Tower) < towerAmount.Amount) {
 				Debug.Log("Cannot craft anything");
 				return false;

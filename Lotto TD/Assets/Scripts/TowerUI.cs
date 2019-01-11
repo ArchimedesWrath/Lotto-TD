@@ -6,9 +6,11 @@ public class TowerUI : MonoBehaviour {
 	public GameObject CurrentTower;
 	public TowerList TowerList;
 	public CraftingList CraftingList;
+	BuildManager buildManager;
 
 	// Use this for initialization
 	void Start () {
+		buildManager = BuildManager.instance;
 		CurrentTower = null;
 		ui.SetActive(false);
 	}
@@ -20,6 +22,10 @@ public class TowerUI : MonoBehaviour {
 	public void Show() {
 		CurrentTower = BuildManager.currentNode.tower;
 		ui.SetActive(true);
+	}
+
+	public void OnSellPressed() {
+		buildManager.SellTower();
 	}
 
 	public void OnCombineTowerPressed() {
