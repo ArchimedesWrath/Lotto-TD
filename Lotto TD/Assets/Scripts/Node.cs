@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour {
 
 	public Color hoverColor;
-	public Tower tower;
+	public GameObject tower;
 	private Color startColor;
 	private Renderer rend;
 
@@ -44,18 +44,20 @@ public class Node : MonoBehaviour {
 		if (Physics.Raycast(ray, out hit)) {
 			if (!IPointerOverUIObject()) {
 
-				if (tower != null) {
-				// Open up the tower info UI
+				// If user shift clicks a node add it to the group
+				if (Input.GetKey(KeyCode.LeftShift)) {
+					Debug.Log("This actually works!");
 
-				// Set the player's current node to this node
-				buildManager.SetCurrentTower(tower);
-				return;
-			}
+					if (tower == null) return;
+					buildManager.SetSecondNode(this);
+					return;
+				}
 
-			//TODO: Open up tower builder UI here
-			// For right now we will just spawn a tower here.
+				// Open up the tower info UI and set the player's current node to this node
+			if (tower != null) buildManager.SetSecondNode(null);
+
+			buildManager.SetSecondNode(null);
 			buildManager.SetCurrentNode(this);
-
 			}
 		}
 	}
@@ -89,7 +91,7 @@ public class Node : MonoBehaviour {
 		}
 	}
 
-	public void SetCurrentTower(Tower newTower) {
+	public void SetCurrentTower(GameObject newTower) {
 		tower = newTower;
 	}
 }

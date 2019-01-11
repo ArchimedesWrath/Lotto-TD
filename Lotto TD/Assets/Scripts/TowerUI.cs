@@ -3,7 +3,7 @@
 public class TowerUI : MonoBehaviour {
 
 	public GameObject ui;
-	public Tower CurrentTower;
+	public GameObject CurrentTower;
 	public TowerList TowerList;
 	public CraftingList CraftingList;
 
@@ -18,17 +18,8 @@ public class TowerUI : MonoBehaviour {
 	}
 
 	public void Show() {
-		CurrentTower = BuildManager.CurrentTower;
+		CurrentTower = BuildManager.currentNode.tower;
 		ui.SetActive(true);
-	}
-
-	public void CombineTowerPressed() {
-		ui.transform.GetChild(0).gameObject.SetActive(false);
-
-		// Now check the recpies and tower lists to populate this GO with buttons. 
-
-		OnCombineTowerPressed();
-		ui.transform.GetChild(1).gameObject.SetActive(true);
 	}
 
 	public void OnCombineTowerPressed() {

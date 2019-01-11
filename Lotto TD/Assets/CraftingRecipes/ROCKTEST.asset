@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78f89a9dd476a5441ba1667dd5507a55, type: 3}
-  m_Name: TESTCRAFT
+  m_Name: ROCKTEST
   m_EditorClassIdentifier: 
   Materials:
-  - Tower: {fileID: 114853715360873706, guid: 098cafe01ec621643a69c99293560432, type: 2}
+  - Tower: {fileID: 1995650330358534, guid: 970a0dd6dc86fa546996a0d81d1e73f4, type: 2}
     Amount: 1
-  - Tower: {fileID: 114540906618761880, guid: 970a0dd6dc86fa546996a0d81d1e73f4, type: 2}
+  - Tower: {fileID: 1995650330358534, guid: 970a0dd6dc86fa546996a0d81d1e73f4, type: 2}
     Amount: 1
-  Result: {fileID: 114607150983798524, guid: 3f81048686c517f49a0edd15b9c798b9, type: 2}
+  Result: {fileID: 1955204264440564, guid: ac55e7b13d76ccc4cb26aa3fff2d7a43, type: 2}

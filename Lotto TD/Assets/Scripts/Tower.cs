@@ -18,10 +18,12 @@ public class Tower : MonoBehaviour {
 		if (target == null) return;
 
 		// Rotate tower to face enemy
+		/*
 		Vector3 dir = this.transform.position - target.position;
 		Quaternion lookRot = Quaternion.LookRotation(dir);
 		Vector3 rotation = Quaternion.Lerp(this.transform.rotation, lookRot, Time.deltaTime).eulerAngles;
 		this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+		*/
 
 		// Logic to fire bullet, similar to countdown logic in wave spawner
 		fireCountDown -= Time.deltaTime;
