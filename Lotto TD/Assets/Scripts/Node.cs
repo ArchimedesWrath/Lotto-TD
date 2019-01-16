@@ -7,6 +7,7 @@ public class Node : MonoBehaviour {
 
 	public Color hoverColor;
 	public GameObject tower;
+	public Tower towerObject;
 	private Color startColor;
 	private Renderer rend;
 
@@ -92,10 +93,12 @@ public class Node : MonoBehaviour {
 
 	public void SetCurrentTower(GameObject newTower) {
 		tower = newTower;
+		towerObject = tower.GetComponent<Tower>();
 	}
 
 	public void DestroyCurrentTower() {
 		Destroy(tower);
 		tower = null;
+		towerObject = null;
 	}
 }

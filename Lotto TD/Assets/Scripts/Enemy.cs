@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
 	private Transform target;
 	private int CheckPointIndex = 0;
 	public int health = 10;
+	public GameObject DamageParticle;
 
 	public GameObject particle;
 	// Use this for initialization
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (DamageParticle) DamageParticle.transform.position = Vector3.MoveTowards(DamageParticle.transform.position, this.transform.position, speed * Time.deltaTime);
 
 		if (this.health <= 0 ) this.Die();
 		this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, speed * Time.deltaTime);

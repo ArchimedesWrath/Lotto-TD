@@ -3,51 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour {
-	private Transform target;
-	public GameObject bullet;
+	public Transform target;
+	public GameObject DamageParticle;
+	public int damage = 4;
 	public float range = 4.0f;
-	public float fireRate = 1f;
-	private float fireCountDown = 0f;
-	// Use this for initialization
+	public float attackSpeed = 1f;
+	public int tier = 1;
+	public float fireCountDown = 0f;
 	void Start () {
-		InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (target == null) return;
-
-		// Rotate tower to face enemy
-		/*
-		Vector3 dir = this.transform.position - target.position;
-		Quaternion lookRot = Quaternion.LookRotation(dir);
-		Vector3 rotation = Quaternion.Lerp(this.transform.rotation, lookRot, Time.deltaTime).eulerAngles;
-		this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-		*/
-
-		// Logic to fire bullet, similar to countdown logic in wave spawner
+	public virtual void Update () {
 		fireCountDown -= Time.deltaTime;
 		if (fireCountDown <= 0) {
-			this.Shoot();
-			fireCountDown = 1 / fireRate;
+			this.Attack();
+			fireCountDown = 1 / attackSpeed;
 		}
 	}
 
-	void OnDrawGizmosSelected() {
+	public virtual void OnDrawGizmosSelected() {
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(this.transform.position, range);
 	}
 
-	void Shoot() {
-		GameObject bulletGo = (GameObject)Instantiate(bullet, this.transform.position, this.transform.rotation);
-		Bullet _bullet = bulletGo.GetComponent<Bullet>();
+	public virtual void Attack() {
 
-		if(bullet != null) _bullet.GetTarget(target);
-	}
-
-	void UpdateTarget() {
-		// Distance checks take computatinoal power so we should do this less than every frame.
-		// Getting every enemy is going to be taxing on the system.
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		float shortestDistance = Mathf.Infinity;
 		GameObject nearestEnemy = null;
@@ -62,6 +42,16 @@ public class Tower : MonoBehaviour {
 			target = nearestEnemy.transform;
 		} else {
 			target = null;
-		}
+		}	
+
+		if (target == null) return;
+		// Now actually attack the enemy (maybe fix this to be better)
+		Enemy targetedEnemy = target.gameObject.GetComponent<Enemy>();
+		targetedEnemy.Damage(damage);
+		if (DamageParticle) {
+			GameObject damageParticle = (GameObject)Instantiate(DamageParticle, target.transform.position, target.transform.rotation);
+			damageParticle.gameObject.GetComponent<DamageParticle>().SetAliveTime(attackSpeed - 0.05f);
+			targetedEnemy.DamageParticle = damageParticle;		
+		} 
 	}
 }

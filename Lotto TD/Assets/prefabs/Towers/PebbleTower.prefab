@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4922929183619748}
-  - component: {fileID: 114756775059277550}
+  - component: {fileID: 114006532792717522}
   m_Layer: 0
   m_Name: PebbleTower
   m_TagString: PEBBLETOWER
@@ -132,7 +132,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114756775059277550
+--- !u!114 &114006532792717522
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,9 +140,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1374583405855932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00eecc4864bbffa4d8a1e545c97a1a45, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ac3abd11f5da7d438b8fb99b0693eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  damage: 10
+  range: 8
+  attackSpeed: 0.5
+  tier: 1
+  fireCountDown: 0
   bullet: {fileID: 1641432794753968, guid: 75337ca8514a51042a12dceebe01e5e2, type: 2}
-  range: 4
-  fireRate: 1
+  partToRotate: {fileID: 1130343867203536}

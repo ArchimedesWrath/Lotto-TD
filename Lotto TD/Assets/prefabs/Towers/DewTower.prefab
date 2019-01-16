@@ -174,9 +174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00eecc4864bbffa4d8a1e545c97a1a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1641432794753968, guid: 75337ca8514a51042a12dceebe01e5e2, type: 2}
+  target: {fileID: 0}
+  damage: 10
   range: 4
-  fireRate: 1
+  attackSpeed: 1
+  tier: 1
+  fireCountDown: 0
 --- !u!198 &198785586744230160
 ParticleSystem:
   m_ObjectHideFlags: 1

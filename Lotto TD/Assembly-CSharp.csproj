@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AoeTower.cs" />
      <Compile Include="Assets\Scripts\BreezeTower.cs" />
      <Compile Include="Assets\Scripts\BuildManager.cs" />
      <Compile Include="Assets\Scripts\BuildTower.cs" />
@@ -61,6 +62,7 @@
      <Compile Include="Assets\Scripts\CheckPoints.cs" />
      <Compile Include="Assets\Scripts\CraftingList.cs" />
      <Compile Include="Assets\Scripts\CraftingRecipe.cs" />
+     <Compile Include="Assets\Scripts\DamageParticle.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Grass.cs" />
@@ -69,8 +71,11 @@
      <Compile Include="Assets\Scripts\MoneyUI.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
+     <Compile Include="Assets\Scripts\ProjectileTower.cs" />
+     <Compile Include="Assets\Scripts\RotateTower.cs" />
      <Compile Include="Assets\Scripts\RoundTimerUI.cs" />
      <Compile Include="Assets\Scripts\RoundUI.cs" />
+     <Compile Include="Assets\Scripts\SingleTargetTower.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\TESTSCRIPT.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />

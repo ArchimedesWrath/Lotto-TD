@@ -242,9 +242,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00eecc4864bbffa4d8a1e545c97a1a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1641432794753968, guid: 75337ca8514a51042a12dceebe01e5e2, type: 2}
-  range: 4
-  fireRate: 1
+  bullet: {fileID: 0}
+  AttackParticle: {fileID: 1030314373016476, guid: 134e847924db2134692d0102cbfb1f04,
+    type: 2}
+  damage: 4
+  range: 10
+  attackSpeed: 1
+  tier: 1
+  rotate: 0
+  hasProjectile: 0
+  aoe: 1
 --- !u!198 &198684272250593214
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -35,18 +35,19 @@ public class BuildManager : MonoBehaviour {
 			return;
 		}
 		int randIndex = UnityEngine.Random.Range(0, buildList.Count);
-		this.BuildTower(buildList[randIndex].gameObject, currentNode);
+		Tower towerToBuild = buildList[randIndex];
+		this.BuildTower(towerToBuild.gameObject, currentNode);
 		
 	}
 
-	public void BuildTower(GameObject tower, Node node) {
+	public void BuildTower(GameObject towerGameObject, Node node) {
 		
 		TowerList.AddNode(node);
-		float towerHeight = tower.transform.GetChild(0).GetComponent<Renderer>().bounds.size.y;
+		float towerHeight = towerGameObject.transform.GetChild(0).GetComponent<Renderer>().bounds.size.y;
 		float nodeHeight = node.GetComponent<Renderer>().bounds.size.y;
 		Vector3 newPos = new Vector3(0f, towerHeight / 2 + nodeHeight, 0);
 		Quaternion rotation = Quaternion.Euler(0f, 0f, 0f);
-		GameObject newTower = (GameObject)Instantiate(tower, node.transform.position + newPos, rotation);
+		GameObject newTower = (GameObject)Instantiate(towerGameObject, node.transform.position + newPos, rotation);
 		node.SetCurrentTower(newTower);
 		TowerStatsUI();
 	}
@@ -77,7 +78,7 @@ public class BuildManager : MonoBehaviour {
 	private void TowerStatsUI() {
 		builderUI.Hide();
 		towerUI.Show();
-		towerStatsUI.Show();
+		towerStatsUI.Show(currentNode.towerObject);
 	}
 
 	private void BuildingUI() {
