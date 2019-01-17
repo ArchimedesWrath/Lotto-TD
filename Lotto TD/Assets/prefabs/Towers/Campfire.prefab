@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4297627117165436}
-  - component: {fileID: 114540906618761880}
+  - component: {fileID: 114907105913772402}
   m_Layer: 0
   m_Name: Campfire
   m_TagString: CAMPFIRE
@@ -231,7 +231,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114540906618761880
+--- !u!114 &114907105913772402
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,19 +239,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1995650330358534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00eecc4864bbffa4d8a1e545c97a1a45, type: 3}
+  m_Script: {fileID: 11500000, guid: a0c916f01e83019418b94e93b8f81a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  AttackParticle: {fileID: 1030314373016476, guid: 134e847924db2134692d0102cbfb1f04,
+  target: {fileID: 0}
+  DamageParticle: {fileID: 1363680686260452, guid: ec484621015ae4b4b962c0048e1ebc21,
     type: 2}
   damage: 4
-  range: 10
+  range: 15
   attackSpeed: 1
-  tier: 1
-  rotate: 0
-  hasProjectile: 0
-  aoe: 1
+  tier: 2
+  fireCountDown: 0
 --- !u!198 &198684272250593214
 ParticleSystem:
   m_ObjectHideFlags: 1

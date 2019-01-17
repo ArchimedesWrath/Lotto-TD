@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 	public float speed = 2.5f;
@@ -10,9 +11,11 @@ public class Enemy : MonoBehaviour {
 	public GameObject DamageParticle;
 
 	public GameObject particle;
+	public Text healthText;
 	// Use this for initialization
 	void Start () {
 		target = CheckPoints.points[0];
+		healthText.text = health.ToString ("#"); 
 	}
 	
 	// Update is called once per frame
@@ -49,6 +52,7 @@ public class Enemy : MonoBehaviour {
 
 	public void Damage(int dps) {
 		this.health -= dps;
+		healthText.text = this.health.ToString("#");
 
 		if (this.health <= 0 ) this.Die();
 	}

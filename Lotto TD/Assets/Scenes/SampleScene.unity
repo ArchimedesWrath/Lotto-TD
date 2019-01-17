@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3632,8 +3632,7 @@ Prefab:
         type: 2}
       propertyPath: Towers.Array.data[0]
       value: 
-      objectReference: {fileID: 114540906618761880, guid: 970a0dd6dc86fa546996a0d81d1e73f4,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114416941373906518, guid: c403e068df7e2a2469b3dba355271834,
         type: 2}
       propertyPath: Towers.Array.data[1]
