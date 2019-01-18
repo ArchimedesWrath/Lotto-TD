@@ -31,6 +31,13 @@ public class TowerUI : MonoBehaviour {
 	public void OnCombineTowerPressed() {
 		// When pressed loop through TowerList and compare it to Crafting Recipes
 		//if (CanCraft) Instantiate Button with that crafting recipe, and Towers
+		if (buildManager.GetSecondNode() == null) {
+			Debug.Log("You need more than at least 2 towers to combine!");
+			return;
+		}
+
+		TowerList.AddNode(buildManager.GetCurrentNode());
+		TowerList.AddNode(buildManager.GetSecondNode());
 		foreach(CraftingRecipe craftingRecipe in CraftingList.CraftingRecipes) {
 			craftingRecipe.Craft(TowerList);
 		}

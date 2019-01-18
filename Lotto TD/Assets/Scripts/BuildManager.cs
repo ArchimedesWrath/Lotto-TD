@@ -11,8 +11,6 @@ public class BuildManager : MonoBehaviour {
 
 	public List<Tower> buildList = new List<Tower>();
 
-	public TowerList TowerList;
-
 	public TowerBuilderUI builderUI;
 	public TowerUI towerUI;
 	public TowerStatsUI towerStatsUI;
@@ -42,7 +40,6 @@ public class BuildManager : MonoBehaviour {
 
 	public void BuildTower(GameObject towerGameObject, Node node) {
 		
-		TowerList.AddNode(node);
 		float towerHeight = towerGameObject.transform.GetChild(0).GetComponent<Renderer>().bounds.size.y;
 		float nodeHeight = node.GetComponent<Renderer>().bounds.size.y;
 		Vector3 newPos = new Vector3(0f, towerHeight / 2 + nodeHeight, 0);
@@ -53,9 +50,7 @@ public class BuildManager : MonoBehaviour {
 	}
 
 	public void SetCurrentNode(Node node) {
-		if (currentNode) TowerList.RemoveNode(currentNode);
 		if (node.tower) {
-			TowerList.AddNode(node);
 			TowerStatsUI();
 		} else {
 			BuildingUI();
@@ -63,10 +58,16 @@ public class BuildManager : MonoBehaviour {
 		currentNode = node;
 	}
 
+	public Node GetCurrentNode() {
+		return currentNode;
+	}
+
 	public void SetSecondNode(Node node) {
-		if (SecondNode) TowerList.RemoveNode(SecondNode);
-		if (node && node.tower) TowerList.AddNode(node);
 		SecondNode = node;
+	}
+
+	public Node GetSecondNode() {
+		return SecondNode;
 	}
 
 	public void SellTower() {
